@@ -77,7 +77,7 @@ public class BookService {
         Optional<Book> optionalBook = repository.findById(id);
         if (optionalBook.isPresent()){
             Book bookToUpdate = optionalBook.get();
-            BeanUtils.copyProperties(book, bookToUpdate, "id");
+            BeanUtils.copyProperties(book, bookToUpdate, "id", "image");
             Book updatedBook = repository.save(bookToUpdate);
             return new CustomResponse<>(
                     updatedBook, false, 200, "Libro actualizado correctamente!"
